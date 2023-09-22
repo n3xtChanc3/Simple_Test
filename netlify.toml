@@ -1,9 +1,17 @@
 [build]
-  command = "python3 app.py"  # Replace with your Flask app's main Python script
-  publish = "."
-  
+  command = "pip install -r requirements.txt && python3 app.py"
+  publish = "."  # Set to the root directory of your project
+
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
+
+[headers]
+  "/*" = [
+    "Cache-Control: public, max-age=0, must-revalidate"
+  ]
+
+#[functions]
+#  directory = "netlify/functions"  # Replace with the directory containing your serverless functions (if any)
 
